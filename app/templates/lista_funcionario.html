@@ -1,0 +1,41 @@
+<!DOCTYPE html> 
+{% load django_bootstrap5 %} 
+ 
+<html lang="pt-br"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Listagem de Funcionario</title>
+    <style type="text/css"> 
+        html { 
+            margin: 2%; 
+        } 
+    </style> 
+    {% bootstrap_css %} 
+    {% bootstrap_javascript %} 
+
+</head> 
+<body> 
+    <h2> Funcionário: </h2> 
+    <form> 
+        <label for="fname" class="form-label">Nome:</label><br> 
+        <input type="text" id="fname" name="fname" class="form-control" value={{fun.nome}} readonly><br> 
+ 
+        <label for="data_nascimento" class="form-label">Nascimento:</label><br> 
+        <input type="date" id="data_nascimento" name="data_nascimento" class="form-control"value={{fun.data_nascimento|date:'Y-m-d'}} readonly><br> 
+ 
+        <label for="email" class="form-label">E-mail:</label><br> 
+        <input type="text" id="email" name="email" class="form-control" value={{fun.email}} readonly><br> 
+ 
+        <label for="remunera"class="form-label">Remuneração:</label><br> 
+        <input type="text" id="remunera" name="remunera" class="form-control" value={{fun.remuneração}} 
+readonly><br> 
+        <br/> 
+    </form> 
+ 
+    <form method="post"> 
+        {% csrf_token %} 
+        <button type="button" class="btn btn-success" onClick="history.go(-1)"> Voltar </button> 
+    </form> 
+</body> 
+</html>
